@@ -1,3 +1,5 @@
+
+
 import sys
 import argparse
 import psutil
@@ -24,25 +26,25 @@ def get_json_data():
             },
             "time": datetime.datetime.utcnow().isoformat(),
             "fields": { 
-                    "total_process":Total_pid,
-                    "total_cpu":Total_cpu,
-                    "total_memory":Total_memory.total,
-                    "used_memory":Total_memory.used,
-                    "free_memory":Total_memory.free,
-                    "memory_usage":Total_memory.percent,
-                    "swap_total":Total_swap_memory.total,
-                    "swap_used":Total_swap_memory.used,
-                    "swap_free":Total_swap_memory.free,
-                    "swap_usage":Total_swap_memory.percent,
-                    "cpu_0":Usage_per_cpu,
+                    "total_process":int(Total_pid),
+                    "total_cpu":int(Total_cpu),
+                    "total_memory":int(Total_memory.total),
+                    "used_memory":int(Total_memory.used),
+                    "free_memory":int(Total_memory.free),
+                    "memory_usage":int(Total_memory.percent),
+                    "swap_total":int(Total_swap_memory.total),
+                    "swap_used":int(Total_swap_memory.used),
+                    "swap_free":int(Total_swap_memory.free),
+                    "swap_usage":int(Total_swap_memory.percent),
+                    "cpu_0":int(Usage_per_cpu),
                    #"cpu_0":Usage_per_cpu[1],
                    #"cpu_1":Usage_per_cpu[1],
                    #"cpu_2":Usage_per_cpu[2],
                    #"cpu_3":Usage_per_cpu[3],
-                    "bytes_sent":Total_network_stat.bytes_sent,
-                    "bytes_recv":Total_network_stat.bytes_recv,
-                    "packet_sent":Total_network_stat.packets_sent,
-                    "packet_recv":Total_network_stat.packets_recv
+                    "bytes_sent":int(Total_network_stat.bytes_sent),
+                    "bytes_recv":int(Total_network_stat.bytes_recv),
+                    "packet_sent":int(Total_network_stat.packets_sent),
+                    "packet_recv":int(Total_network_stat.packets_recv)
                                              }  
      }
         ]
@@ -84,7 +86,5 @@ if __name__ == "__main__":
             print("Error inserting data to DB!!! Check Json Data")
 
         time.sleep(2)
-
-
     
    
