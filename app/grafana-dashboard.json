@@ -1,0 +1,1636 @@
+{
+    "__inputs": [{
+        "name": "DS_INFUX",
+        "label": "infux",
+        "description": "",
+        "type": "datasource",
+        "pluginId": "influxdb",
+        "pluginName": "InfluxDB"
+    }],
+    "__requires": [{
+            "type": "grafana",
+            "id": "grafana",
+            "name": "Grafana",
+            "version": "5.2.1"
+        },
+        {
+            "type": "panel",
+            "id": "graph",
+            "name": "Graph",
+            "version": "5.0.0"
+        },
+        {
+            "type": "datasource",
+            "id": "influxdb",
+            "name": "InfluxDB",
+            "version": "5.0.0"
+        },
+        {
+            "type": "panel",
+            "id": "singlestat",
+            "name": "Singlestat",
+            "version": "5.0.0"
+        }
+    ],
+    "annotations": {
+        "list": [{
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+        }]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": null,
+    "links": [],
+    "panels": [{
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "${DS_INFUX}",
+            "description": "Display cpu performance.",
+            "fill": 1,
+            "gridPos": {
+                "h": 7,
+                "w": 16,
+                "x": 0,
+                "y": 0
+            },
+            "id": 6,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "alias": "CPU",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "previous"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "cpu_0"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": [{
+                    "key": "host",
+                    "operator": "=",
+                    "value": "mypc"
+                }]
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CPU performance",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "rgb(207, 68, 45)",
+                "rgba(237, 129, 40, 0.89)",
+                "#bf1b00"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "Display total process in remote Machine.",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 8,
+                "x": 16,
+                "y": 0
+            },
+            "id": 2,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": true,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "previous"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "total_process"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Total Process",
+            "transparent": false,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#bf1b00",
+                "#508642",
+                "#629e51"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "Display no of cpu cores",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 8,
+                "x": 16,
+                "y": 3
+            },
+            "id": 4,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": false
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "total_cpu"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "No of CPU cores",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "Display memory usage",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": true,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 0,
+                "y": 7
+            },
+            "id": 22,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "memory_usage"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "80",
+            "title": "Memory usage",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#d44a3a",
+                "#629e51",
+                "#7eb26d"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "display free space in memory",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 8,
+                "y": 7
+            },
+            "id": 8,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "free_memory"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Free Memory",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "display used memory",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 13,
+                "y": 7
+            },
+            "id": 10,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "used_memory"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Used memory",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#f9e2d2",
+                "#eab839",
+                "#e0f9d7"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "display total memory of the system",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 18,
+                "y": 7
+            },
+            "id": 16,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "total_memory"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Total Memory",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "Display swapmemory usage",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": true,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 0,
+                "y": 12
+            },
+            "id": 18,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "swap_usage"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "80",
+            "title": "Swap usage",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "#7eb26d",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "Display free swap memory",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 8,
+                "y": 12
+            },
+            "id": 20,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "swap_free"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Free swap memory",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "Display used swap memory",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 13,
+                "y": 12
+            },
+            "id": 24,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "swap_usage"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Used Swap Memory",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "#eab839",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "display swap memory",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 18,
+                "y": 12
+            },
+            "id": 26,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "swap_total"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Total swap Memory",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "#629e51",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "Display total packet send",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 0,
+                "y": 17
+            },
+            "id": 28,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "packet_sent"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Packet Send",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "display total packet receive",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 5,
+                "y": 17
+            },
+            "id": 30,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "packet_recv"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Packet Receive",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "#629e51",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "Total no of byte send",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 6,
+                "x": 10,
+                "y": 17
+            },
+            "id": 32,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "bytes_sent"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Byte send",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": "${DS_INFUX}",
+            "description": "display total no of bytes receive",
+            "format": "none",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 6,
+                "x": 16,
+                "y": 17
+            },
+            "id": 34,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [{
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [{
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+            }],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [{
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "measurement": "systemstats",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "bytes_recv"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "tags": []
+            }],
+            "thresholds": "",
+            "title": "Bytes Receive",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [{
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+            }],
+            "valueName": "avg"
+        }
+    ],
+    "refresh": "10s",
+    "schemaVersion": 16,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-15m",
+        "to": "now"
+    },
+    "timepicker": {
+        "refresh_intervals": [
+            "5s",
+            "10s",
+            "30s",
+            "1m",
+            "5m",
+            "15m",
+            "30m",
+            "1h",
+            "2h",
+            "1d"
+        ],
+        "time_options": [
+            "5m",
+            "15m",
+            "1h",
+            "6h",
+            "12h",
+            "24h",
+            "2d",
+            "7d",
+            "30d"
+        ]
+    },
+    "timezone": "",
+    "title": "Device",
+    "uid": "ASeg8_Diz",
+    "version": 38
+}

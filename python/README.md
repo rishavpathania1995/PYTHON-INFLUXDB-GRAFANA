@@ -2,7 +2,7 @@
 
 # Project Title
 
-Simple Python Script which send Device usage statistics to InfluxDb and Monitor on  Grafana.
+Python Script which send Device usage statistics to InfluxDb.
 
 ### Prerequisites
 
@@ -19,7 +19,7 @@ First Install the requirements form requirements.txt file , for testing we are u
 ```
 pip3 install -r requirements.txt
 ```
-## Running the tests
+## Usage
 
 ```
    python3 py.py --DBserver <server ip> --DBname <db name> --DBusername <db username> --DBpassword <dbpassword> --Port <port no>
@@ -31,6 +31,3 @@ For Help
 python3 py.py --help
 
 ```
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
