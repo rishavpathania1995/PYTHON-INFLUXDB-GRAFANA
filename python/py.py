@@ -10,7 +10,7 @@ from influxdb import InfluxDBClient
 
 def get_json_data():
     Total_pid=len(psutil.pids())
-    Total_cpu=psutil.cpua_count()
+    Total_cpu=psutil.cpu_count()
     Usage_per_cpu=psutil.cpu_percent(interval=1)
     Total_memory=psutil.virtual_memory()
     Total_swap_memory=psutil.swap_memory()
