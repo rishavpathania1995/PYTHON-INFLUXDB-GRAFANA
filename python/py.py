@@ -24,7 +24,7 @@ def get_json_data():
                 "host": "mypc",
                 "region": "India"
             },
-            "time": datetime.datetime.utcnow().isoformat(),
+            "timestamp": datetime.datetime.utcnow().isoformat(),
             "fields": { 
                     "total_process":int(Total_pid),
                     "total_cpu":int(Total_cpu),
