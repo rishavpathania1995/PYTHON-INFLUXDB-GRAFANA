@@ -32,3 +32,4 @@ For Help
 python3 py.py --help
 
 ```
+#### You can find [screenshot](https://github.com/rishavpathania1995/PYTHON-INFLUXDB-GRAFANA/tree/master/pics) on step Perfomed.
