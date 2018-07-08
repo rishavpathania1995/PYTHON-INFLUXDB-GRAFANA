@@ -8,7 +8,7 @@ Publish CPU usage ,Memory usage ,Network statistics.
 
 ### Installation 
 
-First Install the requirements form [requirements.txt file](https://github.com/rishavpathania1995/PYTHON-INFLUXDB-GRAFANA/blob/master/python/requirements.txt) , for testing we are using Ubuntu 16.04.
+First Install the requirements form [requirements.txt](https://github.com/rishavpathania1995/PYTHON-INFLUXDB-GRAFANA/blob/master/python/requirements.txt) file , for testing we are using Ubuntu 16.04.
 
 ```
 pip3 install -r requirements.txt

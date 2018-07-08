@@ -1,8 +1,8 @@
-# Pythonscript-Influxdb-Grafana
+# Python-Influxdb-Grafana
 
 ### Project Title
 
-Python Script which send Device usage statistics to InfluxDb and We Monitor it using Grafana Dashboard.
+Python Script which sends Device usage statistics to InfluxDb and Monitor it using Grafana Dashboard.
 
 ### Prerequisite
 
