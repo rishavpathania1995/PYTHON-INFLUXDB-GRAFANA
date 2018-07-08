@@ -22,7 +22,14 @@ pip3 install -r requirements.txt
 ## Usage
 
 ```
-   python3 py.py --DBserver <server ip> --DBname <db name> --DBusername <db username> --DBpassword <dbpassword> --Port <port no>
+python3 py.py --DBserver <server ip> --DBname <db name> --DBusername <db username> --DBpassword <dbpassword> --Port <port no>
+```
+To Run this Script in linux shell background
+
+```
+
+nohup python3 py.py --DBserver <server ip> --DBname <db name> --DBusername <db username> --DBpassword <dbpassword> --Port <port no> &
+
 ```
 
 For Help
