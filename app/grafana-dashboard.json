@@ -1,7 +1,7 @@
 {
     "__inputs": [{
-        "name": "DS_INFUX",
-        "label": "infux",
+        "name": "DS_INFLUX",
+        "label": "influx",
         "description": "",
         "type": "datasource",
         "pluginId": "influxdb",
@@ -53,7 +53,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Display cpu performance.",
             "fill": 1,
             "gridPos": {
@@ -171,7 +171,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#bf1b00"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Display total process in remote Machine.",
             "format": "none",
             "gauge": {
@@ -263,7 +263,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -274,7 +274,7 @@
                 "#508642",
                 "#629e51"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Display no of cpu cores",
             "format": "none",
             "gauge": {
@@ -354,7 +354,11 @@
                         }
                     ]
                 ],
-                "tags": []
+                "tags": [{
+                    "key": "host",
+                    "operator": "=",
+                    "value": "mypc"
+                }]
             }],
             "thresholds": "",
             "title": "No of CPU cores",
@@ -366,7 +370,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -377,7 +381,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Display memory usage",
             "format": "none",
             "gauge": {
@@ -479,9 +483,9 @@
                 "#629e51",
                 "#7eb26d"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "display free space in memory",
-            "format": "none",
+            "format": "decbytes",
             "gauge": {
                 "maxValue": 100,
                 "minValue": 0,
@@ -528,6 +532,7 @@
             },
             "tableColumn": "",
             "targets": [{
+                "alias": "bytes",
                 "groupBy": [{
                         "params": [
                             "$__interval"
@@ -570,7 +575,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -581,9 +586,9 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "display used memory",
-            "format": "none",
+            "format": "decbytes",
             "gauge": {
                 "maxValue": 100,
                 "minValue": 0,
@@ -664,7 +669,7 @@
                 "tags": []
             }],
             "thresholds": "",
-            "title": "Used memory",
+            "title": "Used Memory",
             "type": "singlestat",
             "valueFontSize": "80%",
             "valueMaps": [{
@@ -672,7 +677,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -683,9 +688,9 @@
                 "#eab839",
                 "#e0f9d7"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "display total memory of the system",
-            "format": "none",
+            "format": "decbytes",
             "gauge": {
                 "maxValue": 100,
                 "minValue": 0,
@@ -774,7 +779,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -785,7 +790,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Display swapmemory usage",
             "format": "none",
             "gauge": {
@@ -887,9 +892,9 @@
                 "#7eb26d",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Display free swap memory",
-            "format": "none",
+            "format": "decbytes",
             "gauge": {
                 "maxValue": 100,
                 "minValue": 0,
@@ -978,7 +983,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -989,9 +994,9 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Display used swap memory",
-            "format": "none",
+            "format": "decbytes",
             "gauge": {
                 "maxValue": 100,
                 "minValue": 0,
@@ -1080,7 +1085,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -1091,9 +1096,9 @@
                 "#eab839",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "display swap memory",
-            "format": "none",
+            "format": "decbytes",
             "gauge": {
                 "maxValue": 100,
                 "minValue": 0,
@@ -1182,7 +1187,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -1193,7 +1198,7 @@
                 "#629e51",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Display total packet send",
             "format": "none",
             "gauge": {
@@ -1284,7 +1289,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -1295,7 +1300,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "display total packet receive",
             "format": "none",
             "gauge": {
@@ -1386,7 +1391,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -1397,9 +1402,9 @@
                 "#629e51",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "Total no of byte send",
-            "format": "none",
+            "format": "decbytes",
             "gauge": {
                 "maxValue": 100,
                 "minValue": 0,
@@ -1488,7 +1493,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         },
         {
             "cacheTimeout": null,
@@ -1499,9 +1504,9 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_INFUX}",
+            "datasource": "${DS_INFLUX}",
             "description": "display total no of bytes receive",
-            "format": "none",
+            "format": "decbytes",
             "gauge": {
                 "maxValue": 100,
                 "minValue": 0,
@@ -1590,7 +1595,7 @@
                 "text": "N/A",
                 "value": "null"
             }],
-            "valueName": "avg"
+            "valueName": "current"
         }
     ],
     "refresh": "10s",
@@ -1632,5 +1637,5 @@
     "timezone": "",
     "title": "Device",
     "uid": "ASeg8_Diz",
-    "version": 38
+    "version": 39
 }
