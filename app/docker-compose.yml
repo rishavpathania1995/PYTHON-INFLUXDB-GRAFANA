@@ -26,4 +26,15 @@ services:
     ports:
       - 3000:3000
 
+  proxy : 
+    build:
+     context:
+     dockerfile: nginx-Dockerfile
+    
+    ports:
+      - 80:80
+    
+      
+
+
 
