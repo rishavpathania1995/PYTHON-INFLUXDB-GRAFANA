@@ -28,7 +28,7 @@ services:
 
   proxy : 
     build:
-     context: proxy
+     context: .
      dockerfile: nginx-Dockerfile
     
     ports:
