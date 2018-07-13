@@ -28,13 +28,13 @@ services:
 
   proxy : 
     build:
-     context:
+     context: proxy
      dockerfile: nginx-Dockerfile
     
     ports:
       - 80:80
     
-      
+
 
 
 
