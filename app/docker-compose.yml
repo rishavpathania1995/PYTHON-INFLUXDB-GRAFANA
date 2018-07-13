@@ -29,7 +29,7 @@ services:
   proxy : 
     build:
      context: .
-     dockerfile: nginx-Dockerfile
+     dockerfile: Dockerfile
     image : nginx-custom
     
     ports:
