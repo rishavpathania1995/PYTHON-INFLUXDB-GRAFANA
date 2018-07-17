@@ -25,15 +25,6 @@ services:
     image: grafana/grafana
     ports:
       - 3000:3000
-
-  proxy : 
-    build:
-     context: .
-     dockerfile: Dockerfile
-    image : nginx-custom
-    
-    ports:
-      - 80:80
     
 
 
